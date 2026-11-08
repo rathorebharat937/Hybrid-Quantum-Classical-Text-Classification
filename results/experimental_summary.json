@@ -1,0 +1,86 @@
+{
+  "environment": {
+    "os": "macOS 15.5",
+    "arch": "Apple Silicon (arm64)",
+    "python": "3.14.6",
+    "pennylane": "0.45.1",
+    "pytorch": "2.15.0",
+    "device": "cpu",
+    "ram_gb": 8,
+    "seed": 42
+  },
+  "experiments": [
+    {
+      "dataset": "MR",
+      "model": "Hybrid QNN",
+      "n_qubits": 4,
+      "n_layers": 2,
+      "accuracy": 0.7591377694470478,
+      "f1_score": 0.7590107673490565,
+      "auc_roc": 0.8450717091440576,
+      "train_time": 17.58933925628662
+    },
+    {
+      "dataset": "CR",
+      "model": "Hybrid QNN",
+      "n_qubits": 4,
+      "n_layers": 2,
+      "accuracy": 0.796875,
+      "f1_score": 0.796214704187476,
+      "auc_roc": 0.8720011745705476,
+      "train_time": 6.058814287185669
+    },
+    {
+      "dataset": "SST",
+      "model": "Hybrid QNN",
+      "n_qubits": 4,
+      "n_layers": 2,
+      "accuracy": 0.8187808896210873,
+      "f1_score": 0.8187749873593226,
+      "auc_roc": 0.8955908748769614,
+      "train_time": 13.82217001914978
+    },
+    {
+      "dataset": "SUBJ",
+      "model": "Hybrid QNN",
+      "n_qubits": 4,
+      "n_layers": 2,
+      "accuracy": 0.899,
+      "f1_score": 0.8990407098799698,
+      "auc_roc": 0.9622869876080091,
+      "train_time": 16.188917875289917
+    },
+    {
+      "dataset": "MPQA",
+      "model": "Hybrid QNN",
+      "n_qubits": 4,
+      "n_layers": 2,
+      "accuracy": 0.8610855565777369,
+      "f1_score": 0.8567225725747627,
+      "auc_roc": 0.8907724380074611,
+      "train_time": 17.330379009246826
+    }
+  ],
+  "started_at": "2026-11-06T20:22:11.713772",
+  "finished_at": "2026-11-06T20:24:42.251989",
+  "best_accuracy": {
+    "model": "Classical MLP",
+    "dataset": "SUBJ",
+    "value": 0.911
+  },
+  "best_f1": {
+    "model": "Classical MLP",
+    "dataset": "SUBJ",
+    "value": 0.9110422902667863
+  },
+  "best_auc": {
+    "model": "Compact MLP (4-dim)",
+    "dataset": "SUBJ",
+    "value": 0.9675090976129788
+  },
+  "fastest_model": {
+    "model": "Linear SVM",
+    "dataset": "CR",
+    "time_seconds": 0.07847285270690918
+  }
+}

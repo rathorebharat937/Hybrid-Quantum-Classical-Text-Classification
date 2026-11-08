@@ -1,0 +1,12 @@
+model:
+  n_qubits: [4, 5]
+  n_layers: [2, 3, 4]
+  max_features: [500, 1000, 1500, 2000, 2500, 3000, 4000, 5000]
+
+training:
+  lr: 0.001
+  batch_size: 32
+  n_epochs: 10
+  seed: 42
+
+datasets: ["MR", "CR", "SUBJ", "MPQA"]

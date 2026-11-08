@@ -1,0 +1,526 @@
+======================================================================
+QUANTUM NEURAL NETWORK TEXT CLASSIFICATION - EXPERIMENT RUNNER
+Started: 2026-11-06T20:22:00.665760
+Device: CPU (macOS arm64)
+======================================================================
+
+======================================================================
+PHASE 3: DATASET PREPARATION
+======================================================================
+
+==================================================
+Loading dataset: MR
+==================================================
+
+[MR Split]
+Train: 8,530
+Val  : 1,065
+Test : 1,067
+  ✅ Loaded: 10662 samples (train=8530, val=1065, test=1067)
+     Train: pos=4265, neg=4265 | Test: pos=533, neg=534
+
+==================================================
+Loading dataset: CR
+==================================================
+
+[CR Split]
+Train: 3,024
+Val  : 362
+Test : 384
+  ✅ Loaded: 3770 samples (train=3024, val=362, test=384)
+     Train: pos=1929, neg=1095 | Test: pos=245, neg=139
+
+==================================================
+Loading dataset: SST
+==================================================
+
+[SST Split]
+Train: 6,920
+Val  : 872
+Test : 1,821
+  ✅ Loaded: 9613 samples (train=6920, val=872, test=1821)
+     Train: pos=3610, neg=3310 | Test: pos=909, neg=912
+
+==================================================
+Loading dataset: SUBJ
+==================================================
+
+[SUBJ Split]
+Train: 8,000
+Val  : 1,000
+Test : 1,000
+  ✅ Loaded: 10000 samples (train=8000, val=1000, test=1000)
+     Train: pos=4033, neg=3967 | Test: pos=478, neg=522
+
+==================================================
+Loading dataset: MPQA
+==================================================
+
+[MPQA Split - 8:1:1]
+Train: 8,687
+Val  : 1,085
+Test : 1,087
+  ✅ Loaded: 10859 samples (train=8687, val=1085, test=1087)
+     Train: pos=2743, neg=5944 | Test: pos=343, neg=744
+
+📊 Dataset statistics saved to results/dataset_statistics.csv
+📊 Class distribution plot saved
+
+======================================================================
+PHASES 5-8: MODEL TRAINING & EVALUATION
+======================================================================
+
+######################################################################
+# DATASET: MR
+######################################################################
+
+  ⏳ TF-IDF preprocessing...
+  Preprocessing time: 0.1s | Feature dim: 5000
+
+  Training Logistic Regression...
+  Logistic Regression: Acc=0.7685 F1=0.7685 AUC=0.8372 Time=0.3s
+
+  Training Linear SVM (Calibrated)...
+  Linear SVM (Calibrated): Acc=0.7516 F1=0.7516 AUC=0.8340 Time=0.3s
+
+  Training Classical MLP [MR] for 10 epochs...
+    Epoch 1/10 | Loss: 0.5776 | Val Acc: 0.7775 | Val F1: 0.7774
+    Epoch 2/10 | Loss: 0.3411 | Val Acc: 0.7728 | Val F1: 0.7726
+    Epoch 3/10 | Loss: 0.2465 | Val Acc: 0.7531 | Val F1: 0.7527
+    Epoch 4/10 | Loss: 0.1822 | Val Acc: 0.7606 | Val F1: 0.7606
+    Epoch 5/10 | Loss: 0.1245 | Val Acc: 0.7502 | Val F1: 0.7502
+    Epoch 6/10 | Loss: 0.0759 | Val Acc: 0.7465 | Val F1: 0.7464
+    Epoch 7/10 | Loss: 0.0388 | Val Acc: 0.7371 | Val F1: 0.7370
+    Epoch 8/10 | Loss: 0.0168 | Val Acc: 0.7315 | Val F1: 0.7314
+    Epoch 9/10 | Loss: 0.0068 | Val Acc: 0.7315 | Val F1: 0.7314
+    Epoch 10/10 | Loss: 0.0036 | Val Acc: 0.7333 | Val F1: 0.7333
+  Best epoch: 1 (Val F1: 0.7774) | Training time: 1.7s
+
+  Training Compact MLP (4-dim) [MR] for 10 epochs...
+    Epoch 1/10 | Loss: 0.6761 | Val Acc: 0.7671 | Val F1: 0.7660
+    Epoch 2/10 | Loss: 0.5699 | Val Acc: 0.7700 | Val F1: 0.7699
+    Epoch 3/10 | Loss: 0.4502 | Val Acc: 0.7784 | Val F1: 0.7784
+    Epoch 4/10 | Loss: 0.3715 | Val Acc: 0.7746 | Val F1: 0.7744
+    Epoch 5/10 | Loss: 0.3194 | Val Acc: 0.7784 | Val F1: 0.7784
+    Epoch 6/10 | Loss: 0.2816 | Val Acc: 0.7793 | Val F1: 0.7792
+    Epoch 7/10 | Loss: 0.2524 | Val Acc: 0.7793 | Val F1: 0.7792
+    Epoch 8/10 | Loss: 0.2283 | Val Acc: 0.7728 | Val F1: 0.7728
+    Epoch 9/10 | Loss: 0.2083 | Val Acc: 0.7709 | Val F1: 0.7709
+    Epoch 10/10 | Loss: 0.1909 | Val Acc: 0.7681 | Val F1: 0.7681
+  Best epoch: 7 (Val F1: 0.7792) | Training time: 0.8s
+
+  Training Hybrid QNN [MR] for 10 epochs...
+    Epoch 1/10 | Loss: 0.6966 | Val Acc: 0.7427 | Val F1: 0.7372
+    Epoch 2/10 | Loss: 0.6508 | Val Acc: 0.7700 | Val F1: 0.7696
+    Epoch 3/10 | Loss: 0.5365 | Val Acc: 0.7765 | Val F1: 0.7762
+    Epoch 4/10 | Loss: 0.4158 | Val Acc: 0.7775 | Val F1: 0.7774
+    Epoch 5/10 | Loss: 0.3395 | Val Acc: 0.7746 | Val F1: 0.7746
+    Epoch 6/10 | Loss: 0.2934 | Val Acc: 0.7869 | Val F1: 0.7867
+    Epoch 7/10 | Loss: 0.2595 | Val Acc: 0.7803 | Val F1: 0.7803
+    Epoch 8/10 | Loss: 0.2335 | Val Acc: 0.7784 | Val F1: 0.7784
+    Epoch 9/10 | Loss: 0.2122 | Val Acc: 0.7737 | Val F1: 0.7737
+    Epoch 10/10 | Loss: 0.1934 | Val Acc: 0.7662 | Val F1: 0.7662
+  Best epoch: 6 (Val F1: 0.7867) | Training time: 17.6s
+
+######################################################################
+# DATASET: CR
+######################################################################
+
+  ⏳ TF-IDF preprocessing...
+  Preprocessing time: 0.1s | Feature dim: 4760
+
+  Training Logistic Regression...
+  Logistic Regression: Acc=0.7891 F1=0.7809 AUC=0.8679 Time=0.1s
+
+  Training Linear SVM (Calibrated)...
+  Linear SVM (Calibrated): Acc=0.7943 F1=0.7919 AUC=0.8672 Time=0.1s
+
+  Training Classical MLP [CR] for 10 epochs...
+    Epoch 1/10 | Loss: 0.6321 | Val Acc: 0.6796 | Val F1: 0.5912
+    Epoch 2/10 | Loss: 0.3802 | Val Acc: 0.7569 | Val F1: 0.7565
+    Epoch 3/10 | Loss: 0.1822 | Val Acc: 0.7762 | Val F1: 0.7768
+    Epoch 4/10 | Loss: 0.0952 | Val Acc: 0.7707 | Val F1: 0.7705
+    Epoch 5/10 | Loss: 0.0525 | Val Acc: 0.7790 | Val F1: 0.7770
+    Epoch 6/10 | Loss: 0.0276 | Val Acc: 0.7735 | Val F1: 0.7714
+    Epoch 7/10 | Loss: 0.0136 | Val Acc: 0.7762 | Val F1: 0.7744
+    Epoch 8/10 | Loss: 0.0072 | Val Acc: 0.7680 | Val F1: 0.7667
+    Epoch 9/10 | Loss: 0.0042 | Val Acc: 0.7707 | Val F1: 0.7688
+    Epoch 10/10 | Loss: 0.0028 | Val Acc: 0.7597 | Val F1: 0.7561
+  Best epoch: 5 (Val F1: 0.7770) | Training time: 0.6s
+
+  Training Compact MLP (4-dim) [CR] for 10 epochs...
+    Epoch 1/10 | Loss: 0.6512 | Val Acc: 0.6381 | Val F1: 0.4972
+    Epoch 2/10 | Loss: 0.6186 | Val Acc: 0.6381 | Val F1: 0.4972
+    Epoch 3/10 | Loss: 0.5525 | Val Acc: 0.6906 | Val F1: 0.6084
+    Epoch 4/10 | Loss: 0.4764 | Val Acc: 0.7486 | Val F1: 0.7239
+    Epoch 5/10 | Loss: 0.4073 | Val Acc: 0.7514 | Val F1: 0.7443
+    Epoch 6/10 | Loss: 0.3507 | Val Acc: 0.7541 | Val F1: 0.7481
+    Epoch 7/10 | Loss: 0.3058 | Val Acc: 0.7541 | Val F1: 0.7511
+    Epoch 8/10 | Loss: 0.2684 | Val Acc: 0.7541 | Val F1: 0.7500
+    Epoch 9/10 | Loss: 0.2386 | Val Acc: 0.7541 | Val F1: 0.7516
+    Epoch 10/10 | Loss: 0.2119 | Val Acc: 0.7541 | Val F1: 0.7521
+  Best epoch: 10 (Val F1: 0.7521) | Training time: 0.3s
+
+  Training Hybrid QNN [CR] for 10 epochs...
+    Epoch 1/10 | Loss: 0.6730 | Val Acc: 0.6381 | Val F1: 0.4972
+    Epoch 2/10 | Loss: 0.6446 | Val Acc: 0.6381 | Val F1: 0.4972
+    Epoch 3/10 | Loss: 0.6135 | Val Acc: 0.6381 | Val F1: 0.4972
+    Epoch 4/10 | Loss: 0.5512 | Val Acc: 0.7155 | Val F1: 0.6632
+    Epoch 5/10 | Loss: 0.4633 | Val Acc: 0.7652 | Val F1: 0.7530
+    Epoch 6/10 | Loss: 0.3762 | Val Acc: 0.7459 | Val F1: 0.7418
+    Epoch 7/10 | Loss: 0.3092 | Val Acc: 0.7569 | Val F1: 0.7541
+    Epoch 8/10 | Loss: 0.2615 | Val Acc: 0.7569 | Val F1: 0.7547
+    Epoch 9/10 | Loss: 0.2252 | Val Acc: 0.7597 | Val F1: 0.7577
+    Epoch 10/10 | Loss: 0.1966 | Val Acc: 0.7652 | Val F1: 0.7637
+  Best epoch: 10 (Val F1: 0.7637) | Training time: 6.1s
+
+######################################################################
+# DATASET: SST
+######################################################################
+
+  ⏳ TF-IDF preprocessing...
+  Preprocessing time: 0.1s | Feature dim: 5000
+
+  Training Logistic Regression...
+  Logistic Regression: Acc=0.7930 F1=0.7927 AUC=0.8835 Time=0.6s
+
+  Training Linear SVM (Calibrated)...
+  Linear SVM (Calibrated): Acc=0.8018 F1=0.8015 AUC=0.8846 Time=0.3s
+
+  Training Classical MLP [SST] for 10 epochs...
+    Epoch 1/10 | Loss: 0.5768 | Val Acc: 0.7982 | Val F1: 0.7979
+    Epoch 2/10 | Loss: 0.2990 | Val Acc: 0.7764 | Val F1: 0.7759
+    Epoch 3/10 | Loss: 0.1848 | Val Acc: 0.7752 | Val F1: 0.7752
+    Epoch 4/10 | Loss: 0.1241 | Val Acc: 0.7752 | Val F1: 0.7752
+    Epoch 5/10 | Loss: 0.0822 | Val Acc: 0.7729 | Val F1: 0.7728
+    Epoch 6/10 | Loss: 0.0527 | Val Acc: 0.7557 | Val F1: 0.7555
+    Epoch 7/10 | Loss: 0.0315 | Val Acc: 0.7638 | Val F1: 0.7637
+    Epoch 8/10 | Loss: 0.0191 | Val Acc: 0.7603 | Val F1: 0.7602
+    Epoch 9/10 | Loss: 0.0112 | Val Acc: 0.7569 | Val F1: 0.7568
+    Epoch 10/10 | Loss: 0.0072 | Val Acc: 0.7557 | Val F1: 0.7555
+  Best epoch: 1 (Val F1: 0.7979) | Training time: 1.4s
+
+  Training Compact MLP (4-dim) [SST] for 10 epochs...
+    Epoch 1/10 | Loss: 0.6762 | Val Acc: 0.7775 | Val F1: 0.7772
+    Epoch 2/10 | Loss: 0.5798 | Val Acc: 0.7775 | Val F1: 0.7760
+    Epoch 3/10 | Loss: 0.4584 | Val Acc: 0.7936 | Val F1: 0.7930
+    Epoch 4/10 | Loss: 0.3683 | Val Acc: 0.7982 | Val F1: 0.7982
+    Epoch 5/10 | Loss: 0.3067 | Val Acc: 0.7936 | Val F1: 0.7936
+    Epoch 6/10 | Loss: 0.2624 | Val Acc: 0.7947 | Val F1: 0.7946
+    Epoch 7/10 | Loss: 0.2287 | Val Acc: 0.7856 | Val F1: 0.7853
+    Epoch 8/10 | Loss: 0.2033 | Val Acc: 0.7856 | Val F1: 0.7854
+    Epoch 9/10 | Loss: 0.1802 | Val Acc: 0.7867 | Val F1: 0.7866
+    Epoch 10/10 | Loss: 0.1609 | Val Acc: 0.7856 | Val F1: 0.7855
+  Best epoch: 4 (Val F1: 0.7982) | Training time: 0.6s
+
+  Training Hybrid QNN [SST] for 10 epochs...
+    Epoch 1/10 | Loss: 0.7024 | Val Acc: 0.5321 | Val F1: 0.3927
+    Epoch 2/10 | Loss: 0.6647 | Val Acc: 0.6778 | Val F1: 0.6480
+    Epoch 3/10 | Loss: 0.5803 | Val Acc: 0.7913 | Val F1: 0.7907
+    Epoch 4/10 | Loss: 0.4546 | Val Acc: 0.7924 | Val F1: 0.7919
+    Epoch 5/10 | Loss: 0.3524 | Val Acc: 0.7913 | Val F1: 0.7912
+    Epoch 6/10 | Loss: 0.2853 | Val Acc: 0.7936 | Val F1: 0.7936
+    Epoch 7/10 | Loss: 0.2421 | Val Acc: 0.7890 | Val F1: 0.7889
+    Epoch 8/10 | Loss: 0.2097 | Val Acc: 0.7867 | Val F1: 0.7866
+    Epoch 9/10 | Loss: 0.1844 | Val Acc: 0.7913 | Val F1: 0.7912
+    Epoch 10/10 | Loss: 0.1630 | Val Acc: 0.7833 | Val F1: 0.7831
+  Best epoch: 6 (Val F1: 0.7936) | Training time: 13.8s
+
+######################################################################
+# DATASET: SUBJ
+######################################################################
+
+  ⏳ TF-IDF preprocessing...
+  Preprocessing time: 0.1s | Feature dim: 5000
+
+  Training Logistic Regression...
+  Logistic Regression: Acc=0.8920 F1=0.8921 AUC=0.9555 Time=0.4s
+
+  Training Linear SVM (Calibrated)...
+  Linear SVM (Calibrated): Acc=0.9050 F1=0.9050 AUC=0.9617 Time=0.3s
+
+  Training Classical MLP [SUBJ] for 10 epochs...
+    Epoch 1/10 | Loss: 0.3866 | Val Acc: 0.9060 | Val F1: 0.9060
+    Epoch 2/10 | Loss: 0.1310 | Val Acc: 0.9120 | Val F1: 0.9120
+    Epoch 3/10 | Loss: 0.0640 | Val Acc: 0.8970 | Val F1: 0.8969
+    Epoch 4/10 | Loss: 0.0315 | Val Acc: 0.8970 | Val F1: 0.8970
+    Epoch 5/10 | Loss: 0.0122 | Val Acc: 0.8950 | Val F1: 0.8950
+    Epoch 6/10 | Loss: 0.0042 | Val Acc: 0.8930 | Val F1: 0.8930
+    Epoch 7/10 | Loss: 0.0020 | Val Acc: 0.8950 | Val F1: 0.8950
+    Epoch 8/10 | Loss: 0.0013 | Val Acc: 0.8970 | Val F1: 0.8970
+    Epoch 9/10 | Loss: 0.0006 | Val Acc: 0.8960 | Val F1: 0.8960
+    Epoch 10/10 | Loss: 0.0004 | Val Acc: 0.8970 | Val F1: 0.8970
+  Best epoch: 2 (Val F1: 0.9120) | Training time: 1.5s
+
+  Training Compact MLP (4-dim) [SUBJ] for 10 epochs...
+    Epoch 1/10 | Loss: 0.6262 | Val Acc: 0.9160 | Val F1: 0.9160
+    Epoch 2/10 | Loss: 0.4013 | Val Acc: 0.9170 | Val F1: 0.9170
+    Epoch 3/10 | Loss: 0.2637 | Val Acc: 0.9160 | Val F1: 0.9160
+    Epoch 4/10 | Loss: 0.1993 | Val Acc: 0.9190 | Val F1: 0.9190
+    Epoch 5/10 | Loss: 0.1609 | Val Acc: 0.9150 | Val F1: 0.9150
+    Epoch 6/10 | Loss: 0.1339 | Val Acc: 0.9110 | Val F1: 0.9110
+    Epoch 7/10 | Loss: 0.1129 | Val Acc: 0.9120 | Val F1: 0.9120
+    Epoch 8/10 | Loss: 0.0962 | Val Acc: 0.9130 | Val F1: 0.9130
+    Epoch 9/10 | Loss: 0.0822 | Val Acc: 0.9120 | Val F1: 0.9120
+    Epoch 10/10 | Loss: 0.0706 | Val Acc: 0.9120 | Val F1: 0.9120
+  Best epoch: 4 (Val F1: 0.9190) | Training time: 0.7s
+
+  Training Hybrid QNN [SUBJ] for 10 epochs...
+    Epoch 1/10 | Loss: 0.6820 | Val Acc: 0.8960 | Val F1: 0.8957
+    Epoch 2/10 | Loss: 0.5035 | Val Acc: 0.9160 | Val F1: 0.9160
+    Epoch 3/10 | Loss: 0.3093 | Val Acc: 0.9120 | Val F1: 0.9120
+    Epoch 4/10 | Loss: 0.2098 | Val Acc: 0.9140 | Val F1: 0.9140
+    Epoch 5/10 | Loss: 0.1606 | Val Acc: 0.9140 | Val F1: 0.9140
+    Epoch 6/10 | Loss: 0.1298 | Val Acc: 0.9120 | Val F1: 0.9120
+    Epoch 7/10 | Loss: 0.1074 | Val Acc: 0.9130 | Val F1: 0.9130
+    Epoch 8/10 | Loss: 0.0897 | Val Acc: 0.9100 | Val F1: 0.9100
+    Epoch 9/10 | Loss: 0.0755 | Val Acc: 0.9110 | Val F1: 0.9109
+    Epoch 10/10 | Loss: 0.0638 | Val Acc: 0.9080 | Val F1: 0.9080
+  Best epoch: 2 (Val F1: 0.9160) | Training time: 16.2s
+
+######################################################################
+# DATASET: MPQA
+######################################################################
+
+  ⏳ TF-IDF preprocessing...
+  Preprocessing time: 0.1s | Feature dim: 5000
+
+  Training Logistic Regression...
+  Logistic Regression: Acc=0.8197 F1=0.8010 AUC=0.8779 Time=0.7s
+
+  Training Linear SVM (Calibrated)...
+  Linear SVM (Calibrated): Acc=0.8583 F1=0.8528 AUC=0.8864 Time=0.3s
+
+  Training Classical MLP [MPQA] for 10 epochs...
+    Epoch 1/10 | Loss: 0.5315 | Val Acc: 0.8359 | Val F1: 0.8236
+    Epoch 2/10 | Loss: 0.2452 | Val Acc: 0.8581 | Val F1: 0.8551
+    Epoch 3/10 | Loss: 0.1547 | Val Acc: 0.8452 | Val F1: 0.8443
+    Epoch 4/10 | Loss: 0.1258 | Val Acc: 0.8544 | Val F1: 0.8526
+    Epoch 5/10 | Loss: 0.1079 | Val Acc: 0.8452 | Val F1: 0.8445
+    Epoch 6/10 | Loss: 0.0957 | Val Acc: 0.8544 | Val F1: 0.8526
+    Epoch 7/10 | Loss: 0.0887 | Val Acc: 0.8442 | Val F1: 0.8426
+    Epoch 8/10 | Loss: 0.0811 | Val Acc: 0.8479 | Val F1: 0.8457
+    Epoch 9/10 | Loss: 0.0714 | Val Acc: 0.8479 | Val F1: 0.8454
+    Epoch 10/10 | Loss: 0.0674 | Val Acc: 0.8488 | Val F1: 0.8465
+  Best epoch: 2 (Val F1: 0.8551) | Training time: 1.6s
+
+  Training Compact MLP (4-dim) [MPQA] for 10 epochs...
+    Epoch 1/10 | Loss: 0.6457 | Val Acc: 0.6848 | Val F1: 0.5576
+    Epoch 2/10 | Loss: 0.5374 | Val Acc: 0.7530 | Val F1: 0.6952
+    Epoch 3/10 | Loss: 0.4346 | Val Acc: 0.8138 | Val F1: 0.7912
+    Epoch 4/10 | Loss: 0.3379 | Val Acc: 0.8507 | Val F1: 0.8400
+    Epoch 5/10 | Loss: 0.2703 | Val Acc: 0.8664 | Val F1: 0.8614
+    Epoch 6/10 | Loss: 0.2233 | Val Acc: 0.8664 | Val F1: 0.8626
+    Epoch 7/10 | Loss: 0.1920 | Val Acc: 0.8618 | Val F1: 0.8577
+    Epoch 8/10 | Loss: 0.1693 | Val Acc: 0.8544 | Val F1: 0.8516
+    Epoch 9/10 | Loss: 0.1530 | Val Acc: 0.8516 | Val F1: 0.8490
+    Epoch 10/10 | Loss: 0.1403 | Val Acc: 0.8479 | Val F1: 0.8459
+  Best epoch: 6 (Val F1: 0.8626) | Training time: 0.8s
+
+  Training Hybrid QNN [MPQA] for 10 epochs...
+    Epoch 1/10 | Loss: 0.6199 | Val Acc: 0.6839 | Val F1: 0.5555
+    Epoch 2/10 | Loss: 0.5719 | Val Acc: 0.7115 | Val F1: 0.6156
+    Epoch 3/10 | Loss: 0.4456 | Val Acc: 0.8240 | Val F1: 0.8072
+    Epoch 4/10 | Loss: 0.3243 | Val Acc: 0.8636 | Val F1: 0.8563
+    Epoch 5/10 | Loss: 0.2453 | Val Acc: 0.8636 | Val F1: 0.8591
+    Epoch 6/10 | Loss: 0.1984 | Val Acc: 0.8608 | Val F1: 0.8580
+    Epoch 7/10 | Loss: 0.1699 | Val Acc: 0.8581 | Val F1: 0.8555
+    Epoch 8/10 | Loss: 0.1507 | Val Acc: 0.8562 | Val F1: 0.8539
+    Epoch 9/10 | Loss: 0.1368 | Val Acc: 0.8562 | Val F1: 0.8534
+    Epoch 10/10 | Loss: 0.1269 | Val Acc: 0.8470 | Val F1: 0.8453
+  Best epoch: 5 (Val F1: 0.8591) | Training time: 17.3s
+
+📊 Model comparison saved to results/model_comparison.csv
+
+======================================================================
+PHASE 10: ABLATION STUDIES
+======================================================================
+
+  Ablation A: Qubit count on CR
+
+    --- 2 qubits ---
+
+  Training QNN 2q for 10 epochs...
+    Epoch 1/10 | Loss: 0.6768 | Val Acc: 0.6381 | Val F1: 0.4972
+    Epoch 2/10 | Loss: 0.6488 | Val Acc: 0.6381 | Val F1: 0.4972
+    Epoch 3/10 | Loss: 0.6350 | Val Acc: 0.6381 | Val F1: 0.4972
+    Epoch 4/10 | Loss: 0.6142 | Val Acc: 0.6381 | Val F1: 0.4972
+    Epoch 5/10 | Loss: 0.5794 | Val Acc: 0.6381 | Val F1: 0.4972
+    Epoch 6/10 | Loss: 0.5346 | Val Acc: 0.6878 | Val F1: 0.6033
+    Epoch 7/10 | Loss: 0.4881 | Val Acc: 0.7238 | Val F1: 0.6740
+    Epoch 8/10 | Loss: 0.4453 | Val Acc: 0.7541 | Val F1: 0.7335
+    Epoch 9/10 | Loss: 0.4035 | Val Acc: 0.7486 | Val F1: 0.7364
+    Epoch 10/10 | Loss: 0.3657 | Val Acc: 0.7459 | Val F1: 0.7356
+  Best epoch: 9 (Val F1: 0.7364) | Training time: 2.8s
+
+    --- 4 qubits ---
+
+  Training QNN 4q for 10 epochs...
+    Epoch 1/10 | Loss: 0.6730 | Val Acc: 0.6381 | Val F1: 0.4972
+    Epoch 2/10 | Loss: 0.6446 | Val Acc: 0.6381 | Val F1: 0.4972
+    Epoch 3/10 | Loss: 0.6135 | Val Acc: 0.6381 | Val F1: 0.4972
+    Epoch 4/10 | Loss: 0.5512 | Val Acc: 0.7155 | Val F1: 0.6632
+    Epoch 5/10 | Loss: 0.4633 | Val Acc: 0.7652 | Val F1: 0.7530
+    Epoch 6/10 | Loss: 0.3762 | Val Acc: 0.7459 | Val F1: 0.7418
+    Epoch 7/10 | Loss: 0.3092 | Val Acc: 0.7569 | Val F1: 0.7541
+    Epoch 8/10 | Loss: 0.2615 | Val Acc: 0.7569 | Val F1: 0.7547
+    Epoch 9/10 | Loss: 0.2252 | Val Acc: 0.7597 | Val F1: 0.7577
+    Epoch 10/10 | Loss: 0.1966 | Val Acc: 0.7652 | Val F1: 0.7637
+  Best epoch: 10 (Val F1: 0.7637) | Training time: 6.1s
+
+    --- 6 qubits ---
+
+  Training QNN 6q for 10 epochs...
+    Epoch 1/10 | Loss: 0.6742 | Val Acc: 0.6381 | Val F1: 0.4972
+    Epoch 2/10 | Loss: 0.6360 | Val Acc: 0.6381 | Val F1: 0.4972
+    Epoch 3/10 | Loss: 0.6035 | Val Acc: 0.6381 | Val F1: 0.4972
+    Epoch 4/10 | Loss: 0.5505 | Val Acc: 0.6768 | Val F1: 0.5826
+    Epoch 5/10 | Loss: 0.4837 | Val Acc: 0.7459 | Val F1: 0.7190
+    Epoch 6/10 | Loss: 0.4093 | Val Acc: 0.7486 | Val F1: 0.7389
+    Epoch 7/10 | Loss: 0.3396 | Val Acc: 0.7459 | Val F1: 0.7393
+    Epoch 8/10 | Loss: 0.2817 | Val Acc: 0.7514 | Val F1: 0.7469
+    Epoch 9/10 | Loss: 0.2343 | Val Acc: 0.7569 | Val F1: 0.7551
+    Epoch 10/10 | Loss: 0.1960 | Val Acc: 0.7652 | Val F1: 0.7642
+  Best epoch: 10 (Val F1: 0.7642) | Training time: 11.6s
+
+  Ablation B: Circuit depth on CR
+
+    --- 1 layer(s) ---
+
+  Training QNN 1L for 10 epochs...
+    Epoch 1/10 | Loss: 0.7801 | Val Acc: 0.3619 | Val F1: 0.1923
+    Epoch 2/10 | Loss: 0.6740 | Val Acc: 0.6381 | Val F1: 0.4972
+    Epoch 3/10 | Loss: 0.6278 | Val Acc: 0.6381 | Val F1: 0.4972
+    Epoch 4/10 | Loss: 0.5811 | Val Acc: 0.6713 | Val F1: 0.5719
+    Epoch 5/10 | Loss: 0.5165 | Val Acc: 0.7348 | Val F1: 0.6890
+    Epoch 6/10 | Loss: 0.4560 | Val Acc: 0.7569 | Val F1: 0.7336
+    Epoch 7/10 | Loss: 0.3995 | Val Acc: 0.7597 | Val F1: 0.7488
+    Epoch 8/10 | Loss: 0.3478 | Val Acc: 0.7486 | Val F1: 0.7418
+    Epoch 9/10 | Loss: 0.3037 | Val Acc: 0.7541 | Val F1: 0.7511
+    Epoch 10/10 | Loss: 0.2657 | Val Acc: 0.7514 | Val F1: 0.7486
+  Best epoch: 9 (Val F1: 0.7511) | Training time: 4.5s
+
+    --- 2 layer(s) ---
+
+  Training QNN 2L for 10 epochs...
+    Epoch 1/10 | Loss: 0.6730 | Val Acc: 0.6381 | Val F1: 0.4972
+    Epoch 2/10 | Loss: 0.6446 | Val Acc: 0.6381 | Val F1: 0.4972
+    Epoch 3/10 | Loss: 0.6135 | Val Acc: 0.6381 | Val F1: 0.4972
+    Epoch 4/10 | Loss: 0.5512 | Val Acc: 0.7155 | Val F1: 0.6632
+    Epoch 5/10 | Loss: 0.4633 | Val Acc: 0.7652 | Val F1: 0.7530
+    Epoch 6/10 | Loss: 0.3762 | Val Acc: 0.7459 | Val F1: 0.7418
+    Epoch 7/10 | Loss: 0.3092 | Val Acc: 0.7569 | Val F1: 0.7541
+    Epoch 8/10 | Loss: 0.2615 | Val Acc: 0.7569 | Val F1: 0.7547
+    Epoch 9/10 | Loss: 0.2252 | Val Acc: 0.7597 | Val F1: 0.7577
+    Epoch 10/10 | Loss: 0.1966 | Val Acc: 0.7652 | Val F1: 0.7637
+  Best epoch: 10 (Val F1: 0.7637) | Training time: 6.2s
+
+    --- 3 layer(s) ---
+
+  Training QNN 3L for 10 epochs...
+    Epoch 1/10 | Loss: 0.6556 | Val Acc: 0.6381 | Val F1: 0.4972
+    Epoch 2/10 | Loss: 0.6320 | Val Acc: 0.6381 | Val F1: 0.4972
+    Epoch 3/10 | Loss: 0.5899 | Val Acc: 0.6381 | Val F1: 0.4972
+    Epoch 4/10 | Loss: 0.5244 | Val Acc: 0.7376 | Val F1: 0.7017
+    Epoch 5/10 | Loss: 0.4491 | Val Acc: 0.7486 | Val F1: 0.7337
+    Epoch 6/10 | Loss: 0.3807 | Val Acc: 0.7486 | Val F1: 0.7425
+    Epoch 7/10 | Loss: 0.3225 | Val Acc: 0.7541 | Val F1: 0.7500
+    Epoch 8/10 | Loss: 0.2759 | Val Acc: 0.7597 | Val F1: 0.7599
+    Epoch 9/10 | Loss: 0.2376 | Val Acc: 0.7624 | Val F1: 0.7612
+    Epoch 10/10 | Loss: 0.2051 | Val Acc: 0.7597 | Val F1: 0.7582
+  Best epoch: 9 (Val F1: 0.7612) | Training time: 8.3s
+
+  Ablation C: Learning rate on CR
+
+    --- lr=0.001 ---
+
+  Training QNN lr=0.001 for 10 epochs...
+    Epoch 1/10 | Loss: 0.6730 | Val Acc: 0.6381 | Val F1: 0.4972
+    Epoch 2/10 | Loss: 0.6446 | Val Acc: 0.6381 | Val F1: 0.4972
+    Epoch 3/10 | Loss: 0.6135 | Val Acc: 0.6381 | Val F1: 0.4972
+    Epoch 4/10 | Loss: 0.5512 | Val Acc: 0.7155 | Val F1: 0.6632
+    Epoch 5/10 | Loss: 0.4633 | Val Acc: 0.7652 | Val F1: 0.7530
+    Epoch 6/10 | Loss: 0.3762 | Val Acc: 0.7459 | Val F1: 0.7418
+    Epoch 7/10 | Loss: 0.3092 | Val Acc: 0.7569 | Val F1: 0.7541
+    Epoch 8/10 | Loss: 0.2615 | Val Acc: 0.7569 | Val F1: 0.7547
+    Epoch 9/10 | Loss: 0.2252 | Val Acc: 0.7597 | Val F1: 0.7577
+    Epoch 10/10 | Loss: 0.1966 | Val Acc: 0.7652 | Val F1: 0.7637
+  Best epoch: 10 (Val F1: 0.7637) | Training time: 6.5s
+
+    --- lr=0.0005 ---
+
+  Training QNN lr=0.0005 for 10 epochs...
+    Epoch 1/10 | Loss: 0.6837 | Val Acc: 0.6381 | Val F1: 0.4972
+    Epoch 2/10 | Loss: 0.6601 | Val Acc: 0.6381 | Val F1: 0.4972
+    Epoch 3/10 | Loss: 0.6470 | Val Acc: 0.6381 | Val F1: 0.4972
+    Epoch 4/10 | Loss: 0.6348 | Val Acc: 0.6381 | Val F1: 0.4972
+    Epoch 5/10 | Loss: 0.6173 | Val Acc: 0.6381 | Val F1: 0.4972
+    Epoch 6/10 | Loss: 0.5895 | Val Acc: 0.6464 | Val F1: 0.5159
+    Epoch 7/10 | Loss: 0.5536 | Val Acc: 0.6713 | Val F1: 0.5719
+    Epoch 8/10 | Loss: 0.5119 | Val Acc: 0.7182 | Val F1: 0.6695
+    Epoch 9/10 | Loss: 0.4660 | Val Acc: 0.7652 | Val F1: 0.7485
+    Epoch 10/10 | Loss: 0.4206 | Val Acc: 0.7541 | Val F1: 0.7454
+  Best epoch: 9 (Val F1: 0.7485) | Training time: 6.1s
+
+    --- lr=0.0001 ---
+
+  Training QNN lr=0.0001 for 10 epochs...
+    Epoch 1/10 | Loss: 0.6963 | Val Acc: 0.6519 | Val F1: 0.6075
+    Epoch 2/10 | Loss: 0.6889 | Val Acc: 0.6381 | Val F1: 0.4972
+    Epoch 3/10 | Loss: 0.6820 | Val Acc: 0.6381 | Val F1: 0.4972
+    Epoch 4/10 | Loss: 0.6759 | Val Acc: 0.6381 | Val F1: 0.4972
+    Epoch 5/10 | Loss: 0.6710 | Val Acc: 0.6381 | Val F1: 0.4972
+    Epoch 6/10 | Loss: 0.6660 | Val Acc: 0.6381 | Val F1: 0.4972
+    Epoch 7/10 | Loss: 0.6619 | Val Acc: 0.6381 | Val F1: 0.4972
+    Epoch 8/10 | Loss: 0.6583 | Val Acc: 0.6381 | Val F1: 0.4972
+    Epoch 9/10 | Loss: 0.6551 | Val Acc: 0.6381 | Val F1: 0.4972
+    Epoch 10/10 | Loss: 0.6532 | Val Acc: 0.6381 | Val F1: 0.4972
+  Best epoch: 1 (Val F1: 0.6075) | Training time: 6.2s
+
+📊 Ablation results saved to results/ablation_study.csv
+
+📊 Experimental summary saved to results/experimental_summary.json
+
+======================================================================
+ALL EXPERIMENTS COMPLETED
+Finished: 2026-11-06T20:24:42.256153
+======================================================================
+
+======================================================================
+FINAL RESULTS SUMMARY
+======================================================================
+
+--- MR ---
+  Logistic Regression            | Acc: 0.7685 | F1: 0.7685 | AUC: 0.8372 | Time: 0.3s
+  Linear SVM                     | Acc: 0.7516 | F1: 0.7516 | AUC: 0.8340 | Time: 0.3s
+  Classical MLP                  | Acc: 0.7545 | F1: 0.7544 | AUC: 0.8410 | Time: 1.7s
+  Compact MLP (4-dim)            | Acc: 0.7610 | F1: 0.7610 | AUC: 0.8414 | Time: 0.8s
+  Hybrid QNN                     | Acc: 0.7591 | F1: 0.7590 | AUC: 0.8451 | Time: 17.6s
+
+--- CR ---
+  Logistic Regression            | Acc: 0.7891 | F1: 0.7809 | AUC: 0.8679 | Time: 0.1s
+  Linear SVM                     | Acc: 0.7943 | F1: 0.7919 | AUC: 0.8672 | Time: 0.1s
+  Classical MLP                  | Acc: 0.7891 | F1: 0.7889 | AUC: 0.8533 | Time: 0.6s
+  Compact MLP (4-dim)            | Acc: 0.7943 | F1: 0.7927 | AUC: 0.8735 | Time: 0.3s
+  Hybrid QNN                     | Acc: 0.7969 | F1: 0.7962 | AUC: 0.8720 | Time: 6.1s
+
+--- SST ---
+  Logistic Regression            | Acc: 0.7930 | F1: 0.7927 | AUC: 0.8835 | Time: 0.6s
+  Linear SVM                     | Acc: 0.8018 | F1: 0.8015 | AUC: 0.8846 | Time: 0.3s
+  Classical MLP                  | Acc: 0.8034 | F1: 0.8031 | AUC: 0.8840 | Time: 1.4s
+  Compact MLP (4-dim)            | Acc: 0.8149 | F1: 0.8149 | AUC: 0.8944 | Time: 0.6s
+  Hybrid QNN                     | Acc: 0.8188 | F1: 0.8188 | AUC: 0.8956 | Time: 13.8s
+
+--- SUBJ ---
+  Logistic Regression            | Acc: 0.8920 | F1: 0.8921 | AUC: 0.9555 | Time: 0.4s
+  Linear SVM                     | Acc: 0.9050 | F1: 0.9050 | AUC: 0.9617 | Time: 0.3s
+  Classical MLP                  | Acc: 0.9110 | F1: 0.9110 | AUC: 0.9662 | Time: 1.5s
+  Compact MLP (4-dim)            | Acc: 0.9090 | F1: 0.9090 | AUC: 0.9675 | Time: 0.7s
+  Hybrid QNN                     | Acc: 0.8990 | F1: 0.8990 | AUC: 0.9623 | Time: 16.2s
+
+--- MPQA ---
+  Logistic Regression            | Acc: 0.8197 | F1: 0.8010 | AUC: 0.8779 | Time: 0.7s
+  Linear SVM                     | Acc: 0.8583 | F1: 0.8528 | AUC: 0.8864 | Time: 0.3s
+  Classical MLP                  | Acc: 0.8638 | F1: 0.8609 | AUC: 0.8931 | Time: 1.6s
+  Compact MLP (4-dim)            | Acc: 0.8620 | F1: 0.8579 | AUC: 0.8929 | Time: 0.8s
+  Hybrid QNN                     | Acc: 0.8611 | F1: 0.8567 | AUC: 0.8908 | Time: 17.3s

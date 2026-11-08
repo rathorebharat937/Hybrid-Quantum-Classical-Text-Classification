@@ -1,0 +1,6 @@
+test_case,weight_grad_method,max_abs_err_weights,weight_grad_status,input_grad_method,max_abs_err_inputs,input_grad_status
+Zero Input,Parameter-Shift (s=pi/2),2.31158009400545e-09,PASS,Central FD (eps=1e-3),1.1335507532628242e-07,PASS
+Small Positive,Parameter-Shift (s=pi/2),3.2101172692255986e-09,PASS,Central FD (eps=1e-3),1.564047641400279e-07,PASS
+Mixed Signs,Parameter-Shift (s=pi/2),3.331712787602026e-09,PASS,Central FD (eps=1e-3),3.617553444579258e-07,PASS
+Seeded Random,Parameter-Shift (s=pi/2),4.359768990269686e-09,PASS,Central FD (eps=1e-3),1.482599064406287e-06,PASS
+Large Magnitude,Parameter-Shift (s=pi/2),5.060750540852865e-09,PASS,Central FD (eps=1e-3),2.4558046257117105e-06,PASS

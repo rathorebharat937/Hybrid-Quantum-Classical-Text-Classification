@@ -1,0 +1,10 @@
+model,dataset,vocab_size,input_dim,encoder_params,quantum_params,readout_params,total_trainable_params,total_fitted_params,notes
+Logistic Regression,CR,4760,4760,0,0,0,0,4761,Linear model fitted coefficients (4760 weights + 1 intercept)
+Linear SVM,CR,4760,4760,0,0,0,0,4761,Linear SVM dual/primal coefficients (4760 weights + 1 intercept)
+Classical Deep MLP,CR,4760,4760,306752,0,98,306850,306850,Architecture: Linear(4760->64) + Linear(64->32) + Linear(32->2)
+Compact MLP (4-dim),CR,4760,4760,19044,0,10,19054,19054,Architecture: Linear(4760->4) + Linear(4->2)
+PennyLane Hybrid QNN,CR,4760,4760,19044,24,10,19078,19078,Architecture: Linear(4760->4) + VQC(4q 2L) + Linear(4->2)
+IBM Qiskit Hybrid QNN,CR,4760,4760,19044,24,10,19078,19078,Architecture: Linear(4760->4) + VQC(4q 2L) + Linear(4->2)
+PennyLane Hybrid QNN (Theoretical/MR/SST),MR/SST,5000,5000,20004,24,10,20038,20038,Full 5000-feature vocabulary allocation (e.g. MR and SST datasets)
+IBM Qiskit Hybrid QNN (Theoretical/MR/SST),MR/SST,5000,5000,20004,24,10,20038,20038,Full 5000-feature vocabulary allocation (e.g. MR and SST datasets)
+

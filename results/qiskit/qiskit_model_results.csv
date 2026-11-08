@@ -1,0 +1,2 @@
+dataset,model,accuracy,precision,recall,weighted_f1,macro_f1,pos_f1,auc_roc,train_time_sec,eval_time_sec,best_epoch,total_epochs,seed,active_features,trainable_parameters,tp,tn,fp,fn
+CR,Hybrid QNN (IBM Qiskit),0.7994791666666666,0.7986137877530045,0.7994791666666666,0.7989955206220419,0.7819066937119675,0.8438133874239351,0.8742915871384525,95.78,0.093,10,10,42,4760,19078,208,99,40,37

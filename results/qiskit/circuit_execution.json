@@ -1,0 +1,31 @@
+{
+  "framework": "Qiskit 2.6.2",
+  "simulator_backend": "Statevector (exact analytical)",
+  "n_qubits": 4,
+  "n_layers": 2,
+  "circuit_depth": 17,
+  "total_gates": 44,
+  "gate_counts": {
+    "rz": 12,
+    "rx": 8,
+    "ry": 8,
+    "rzz": 6,
+    "cx": 6,
+    "h": 4
+  },
+  "trainable_parameters": 24,
+  "input_features": [
+    0.4519999921321869,
+    -0.7179999947547913,
+    0.2840000092983246,
+    -0.6389999985694885
+  ],
+  "pauli_z_expectations": [
+    0.3224667012691498,
+    -0.06382261216640472,
+    0.11768298596143723,
+    -0.11426638066768646
+  ],
+  "circuit_build_time_ms": 0.15211105346679688,
+  "simulation_time_ms": 1.2040138244628906
+}

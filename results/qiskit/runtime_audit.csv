@@ -1,0 +1,6 @@
+model,framework,epochs,total_train_time_sec,per_epoch_time_sec,eval_time_sec,inference_latency_ms_per_sample,gradient_method,simulator_backend,circuit_evals_per_epoch,total_circuit_evals
+Logistic Regression,Scikit-Learn,N/A (Convex Solver),0.1234748363494873,,0.0007791519165039062,0.0020290414492289224,L-BFGS / Coordinate Descent,N/A (CPU),0,0
+Linear SVM,Scikit-Learn,N/A (Coordinate Descent),0.1501913070678711,,0.004060029983520508,0.010572994748751322,Coordinate Descent + Platt,N/A (CPU),0,0
+Compact MLP (4-dim),PyTorch,10,0.2875058650970459,0.02875058650970459,0.0017430782318115234,0.004539266228675842,Reverse-Mode Autograd,N/A (CPU Tensors),0,0
+Hybrid QNN (PennyLane),PennyLane + PyTorch,10,5.218544244766235,0.5218544244766236,0.0056760311126708984,0.014781331022580465,Reverse-Mode AD (default.qubit),default.qubit (CPU),3024,30240
+Hybrid QNN (IBM Qiskit),IBM Qiskit + PyTorch,10 (Projected from verified Epoch 1: 134.18s),1341.8000000000002,134.18,0.3076028823852539,0.8010491728782654,Parameter-Shift (weights) + Central FD (inputs),Qiskit Statevector (Aer/CPU),172368,1723680
